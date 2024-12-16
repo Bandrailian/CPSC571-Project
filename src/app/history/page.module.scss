@@ -1,0 +1,111 @@
+@use '@/app/styles/variables';
+@use 'sass:color';
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: variables.$spacing-unit * 4;
+}
+
+.title {
+    font-size: 2rem;
+    color: variables.$primary-color;
+    margin-bottom: variables.$spacing-unit * 4;
+    text-align: center;
+}
+
+.assessments {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-unit * 4;
+}
+
+.assessmentCard {
+    background-color: white;
+    border-radius: variables.$border-radius;
+    padding: variables.$spacing-unit * 4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.date {
+    font-size: variables.$font-size-large;
+    color: variables.$secondary-color;
+    margin-bottom: variables.$spacing-unit * 2;
+    text-align: right;
+}
+
+.empty {
+    text-align: center;
+    padding: variables.$spacing-unit * 8;
+    background-color: white;
+    border-radius: variables.$border-radius;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    p {
+        color: variables.$text-color;
+        margin-bottom: variables.$spacing-unit * 3;
+    }
+}
+
+.startButton {
+    background-color: variables.$primary-color;
+    color: white;
+    padding: variables.$spacing-unit * 1.5 variables.$spacing-unit * 3;
+    border-radius: variables.$border-radius;
+    border: none;
+    cursor: pointer;
+    transition: background-color variables.$transition-speed variables.$transition-ease;
+
+    &:hover {
+        background-color: color.adjust(variables.$primary-color, $lightness: -10%);
+    }
+}
+
+.loading, .error {
+    text-align: center;
+    padding: variables.$spacing-unit * 8;
+    color: variables.$text-color;
+}
+
+.error {
+    color: variables.$error-color;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: variables.$spacing-unit * 4;
+}
+
+.exportButton {
+    background-color: variables.$secondary-color;
+    color: white;
+    padding: variables.$spacing-unit * 1.5 variables.$spacing-unit * 3;
+    border-radius: variables.$border-radius;
+    border: none;
+    cursor: pointer;
+    transition: background-color variables.$transition-speed variables.$transition-ease;
+
+    &:hover {
+        background-color: color.adjust(variables.$secondary-color, $lightness: -10%);
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+    }
+}
+
+.backButton {
+    background-color: variables.$secondary-color;
+    color: white;
+    padding: variables.$spacing-unit * 1.5 variables.$spacing-unit * 3;
+    border-radius: variables.$border-radius;
+    border: none;
+    cursor: pointer;
+    transition: background-color variables.$transition-speed variables.$transition-ease;
+
+    &:hover {
+        background-color: color.adjust(variables.$secondary-color, $lightness: -10%);
+    }
+} 
