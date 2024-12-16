@@ -61,6 +61,9 @@ ${JSON.stringify(answers, null, 2)}
 Diagnosis:
 ${JSON.stringify(diagnosis, null, 2)}
 
+Lifestyle Factors:
+${JSON.stringify(extractLifestyleAnswers(answers), null, 2)}
+
 Context:
 - User has ${previousAssessments.length} previous assessments
 - ${previousPatterns.length > 0 ? 'Shows pattern of ' + getPatternInsights(previousPatterns) : 'First assessment'}
@@ -68,7 +71,7 @@ Context:
 Based on this comprehensive analysis:
 1. Provide 3-5 specific, actionable recommendations
 2. Consider both immediate coping strategies and long-term improvement plans
-3. Take into account lifestyle factors and previous patterns
+3. Address specific lifestyle factors (sleep, exercise, social activity)
 4. Prioritize evidence-based interventions
 5. Include both mental health and lifestyle recommendations
 
