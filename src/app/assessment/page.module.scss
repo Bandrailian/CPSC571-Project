@@ -1,0 +1,11 @@
+@use '@/app/styles/variables';
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: variables.$spacing-unit * 4;
+}
+
+.assessmentContent {
+    margin-top: variables.$spacing-unit * 4;
+} 

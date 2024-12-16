@@ -1,0 +1,58 @@
+@use '@/app/styles/variables';
+@use "sass:color";
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: variables.$background-color;
+    color: variables.$text-color;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color variables.$transition-speed variables.$transition-ease;
+    
+    &:hover {
+        color: variables.$accent-color;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 variables.$container-padding;
+}
+
+.button {
+    background-color: variables.$primary-color;
+    color: white;
+    padding: variables.$spacing-unit * 1.5 variables.$spacing-unit * 3;
+    border-radius: variables.$border-radius;
+    border: none;
+    cursor: pointer;
+    transition: background-color variables.$transition-speed variables.$transition-ease;
+    
+    &:hover {
+        background-color: color.adjust(variables.$primary-color, $lightness: -10%);
+    }
+    
+    &.secondary {
+        background-color: variables.$secondary-color;
+        
+        &:hover {
+            background-color: color.adjust(variables.$secondary-color, $lightness: -10%);
+        }
+    }
+}

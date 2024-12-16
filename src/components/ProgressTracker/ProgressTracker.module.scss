@@ -1,0 +1,51 @@
+@use '@/app/styles/variables';
+@use 'sass:color';
+
+.container {
+    padding: variables.$spacing-unit * 2;
+    background-color: white;
+    border-radius: variables.$border-radius;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.overall {
+    margin-bottom: variables.$spacing-unit * 3;
+}
+
+.progressBar, .sectionBar {
+    height: 8px;
+    background-color: variables.$background-color;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: variables.$spacing-unit;
+}
+
+.progress, .sectionProgress {
+    height: 100%;
+    background-color: variables.$primary-color;
+    transition: width 0.3s ease;
+}
+
+.percentage {
+    font-size: variables.$font-size-small;
+    color: variables.$text-color;
+}
+
+.sections {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-unit * 2;
+}
+
+.section {
+    .label {
+        display: block;
+        font-size: variables.$font-size-small;
+        color: variables.$text-color;
+        margin-bottom: variables.$spacing-unit;
+    }
+
+    .sectionProgress {
+        background-color: variables.$accent-color;
+    }
+} 

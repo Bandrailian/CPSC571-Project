@@ -1,0 +1,39 @@
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Mixins
+@mixin mobile {
+    @media (max-width: #{$breakpoint-sm - 1}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$breakpoint-sm}) and (max-width: #{$breakpoint-md - 1}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$breakpoint-md}) {
+        @content;
+    }
+}
+
+// Layout utilities
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    @include tablet {
+        max-width: $breakpoint-sm;
+    }
+
+    @include desktop {
+        max-width: $breakpoint-md;
+    }
+} 

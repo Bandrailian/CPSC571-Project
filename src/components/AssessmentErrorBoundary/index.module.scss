@@ -1,0 +1,54 @@
+@use '@/app/styles/variables';
+@use "sass:color";
+
+.errorContainer {
+    text-align: center;
+    padding: variables.$spacing-unit * 4;
+    margin: variables.$spacing-unit * 4;
+    background-color: white;
+    border-radius: variables.$border-radius;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    h2 {
+        color: variables.$error-color;
+        margin-bottom: variables.$spacing-unit * 2;
+    }
+}
+
+.errorMessage {
+    color: variables.$text-color;
+    margin-bottom: variables.$spacing-unit * 3;
+}
+
+.actions {
+    display: flex;
+    gap: variables.$spacing-unit * 2;
+    justify-content: center;
+}
+
+.retryButton, .restartButton {
+    padding: variables.$spacing-unit * 1.5 variables.$spacing-unit * 3;
+    border-radius: variables.$border-radius;
+    border: none;
+    cursor: pointer;
+    transition: background-color variables.$transition-speed variables.$transition-ease;
+    font-size: variables.$font-size-base;
+}
+
+.retryButton {
+    background-color: variables.$primary-color;
+    color: white;
+
+    &:hover {
+        background-color: color.adjust(variables.$primary-color, $lightness: -10%);
+    }
+}
+
+.restartButton {
+    background-color: variables.$secondary-color;
+    color: white;
+
+    &:hover {
+        background-color: color.adjust(variables.$secondary-color, $lightness: -10%);
+    }
+} 
