@@ -2,6 +2,7 @@
 
 import { Component, ReactNode } from 'react';
 import styles from './index.module.scss';
+import { ErrorInfo } from '@/types/common';
 
 interface Props {
     children: ReactNode;
@@ -31,7 +32,7 @@ export class AssessmentErrorBoundary extends Component<Props, State> {
         };
     }
 
-    componentDidCatch(error: Error, errorInfo: any) {
+    componentDidCatch(error: Error, errorInfo: ErrorInfo) {
         console.error('Assessment Error:', error, errorInfo);
         // You could send this to an error reporting service
     }

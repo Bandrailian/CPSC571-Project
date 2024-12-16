@@ -2,18 +2,19 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useAssessment } from '@/contexts/AssessmentContext';
-import { questions } from '@/data/questions';
 import { useKeyboardNavigation } from '@/hooks/useKeyboardNavigation';
 import styles from './Question.module.scss';
+import { QuestionAnswer } from '@/types/common';
 
 type QuestionProps = {
     question: {
         id: string;
         text: string;
-        options: {
+        type: string;
+        options: Array<{
             text: string;
             value: number;
-        }[];
+        }>;
     };
     onNext: () => void;
     onPrevious: () => void;
@@ -32,12 +33,19 @@ export function Question({ question, onNext, onPrevious }: QuestionProps) {
         }
     }, [question.id, state.answers]);
 
-    const handleOptionSelect = (value: number) => {
-        setSelectedOption(value);
+    const handleAnswer = (value: number, text: string) => {
         dispatch({
             type: 'SET_ANSWER',
-            payload: { questionId: question.id, answer: { value } }
+            payload: {
+                questionId: question.id,
+                answer: { value, text } as QuestionAnswer
+            }
         });
+    };
+
+    const handleOptionSelect = (value: number) => {
+        setSelectedOption(value);
+        handleAnswer(value, question.options.find(option => option.value === value)?.text || '');
     };
 
     const handleKeyPress = (e: React.KeyboardEvent, value: number) => {
