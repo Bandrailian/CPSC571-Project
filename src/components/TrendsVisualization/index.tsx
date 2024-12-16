@@ -91,12 +91,11 @@ export function TrendsVisualization({ assessments }: TrendsVisualizationProps) {
                             label += ': ';
                         }
                         if (context.parsed.y !== null) {
-                            // Add different labels based on the axis
-                            if (context.dataset.yAxisID === 'y') {
-                                label += context.parsed.y + ' points';
-                            } else {
+                            if (context.dataset.yAxisID === 'y1') {
                                 const ratings = ['Poor', 'Fair', 'Good', 'Excellent'];
-                                label += ratings[context.parsed.y];
+                                label += ratings[context.parsed.y] || 'Unknown';
+                            } else {
+                                label += context.parsed.y + ' points';
                             }
                         }
                         return label;
