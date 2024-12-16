@@ -1,0 +1,119 @@
+@use '@/app/styles/variables';
+@use 'sass:color';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-unit * 4;
+}
+
+.scoreSection,
+.diagnosisSection,
+.recommendationsSection {
+    h3 {
+        color: variables.$primary-color;
+        margin-bottom: variables.$spacing-unit * 2;
+    }
+}
+
+.scores {
+    display: flex;
+    gap: variables.$spacing-unit * 4;
+    justify-content: center;
+}
+
+.scoreCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: variables.$spacing-unit;
+}
+
+.label {
+    font-size: variables.$font-size-base;
+    color: variables.$text-color;
+}
+
+.score {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: variables.$font-size-large;
+    font-weight: bold;
+    color: white;
+
+    &.normal { background-color: variables.$success-color; }
+    &.mild { background-color: #FFC107; }
+    &.moderate { background-color: #FF9800; }
+    &.severe { background-color: variables.$error-color; }
+}
+
+.diagnosis {
+    background-color: rgba(variables.$accent-color, 0.1);
+    padding: variables.$spacing-unit * 2;
+    border-radius: variables.$border-radius;
+    
+    p {
+        margin-bottom: variables.$spacing-unit;
+        &:last-child { margin-bottom: 0; }
+    }
+}
+
+.recommendations {
+    list-style: none;
+    padding: 0;
+}
+
+.recommendation {
+    margin-bottom: variables.$spacing-unit * 2;
+    padding-left: variables.$spacing-unit * 3;
+    position: relative;
+
+    > p:first-child {
+        &:before {
+            content: '•';
+            position: absolute;
+            left: variables.$spacing-unit;
+            color: variables.$accent-color;
+        }
+    }
+
+    p {
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    a {
+        color: variables.$accent-color;
+        text-decoration: underline;
+        
+        &:hover {
+            color: color.adjust(variables.$accent-color, $lightness: -10%);
+        }
+    }
+
+    strong {
+        color: variables.$primary-color;
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    ul, ol {
+        margin: variables.$spacing-unit 0;
+        padding-left: variables.$spacing-unit * 2;
+        list-style-position: outside;
+        
+        li {
+            margin-bottom: variables.$spacing-unit;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+} 

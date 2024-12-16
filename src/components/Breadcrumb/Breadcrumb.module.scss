@@ -1,0 +1,47 @@
+@use '@/app/styles/variables';
+@use 'sass:color';
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: variables.$spacing-unit * 2;
+    margin-bottom: variables.$spacing-unit * 4;
+    background-color: white;
+    border-radius: variables.$border-radius;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumbItem {
+    display: flex;
+    align-items: center;
+}
+
+.section {
+    background: none;
+    border: none;
+    padding: variables.$spacing-unit variables.$spacing-unit * 2;
+    cursor: pointer;
+    font-size: variables.$font-size-base;
+    color: variables.$text-color;
+    transition: all variables.$transition-speed variables.$transition-ease;
+
+    &:hover:not(.disabled) {
+        color: variables.$accent-color;
+    }
+
+    &.active {
+        color: variables.$primary-color;
+        font-weight: bold;
+    }
+
+    &.disabled {
+        color: color.adjust(variables.$text-color, $lightness: 40%);
+        cursor: not-allowed;
+    }
+}
+
+.separator {
+    margin: 0 variables.$spacing-unit;
+    color: variables.$accent-color;
+} 

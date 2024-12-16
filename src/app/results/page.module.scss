@@ -1,0 +1,135 @@
+@use '@/app/styles/variables';
+@use 'sass:color';
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: variables.$spacing-unit * 4;
+}
+
+.loadingContainer {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: variables.$spacing-unit * 4;
+    background-color: white;
+    border-radius: variables.$border-radius;
+    padding: variables.$spacing-unit * 4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loadingSteps {
+    width: 100%;
+    max-width: 400px;
+}
+
+.step {
+    margin-bottom: variables.$spacing-unit * 2;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.stepLabel {
+    display: block;
+    margin-bottom: variables.$spacing-unit;
+    color: variables.$text-color;
+    font-size: variables.$font-size-base;
+}
+
+.stepProgress {
+    height: 4px;
+    background-color: variables.$background-color;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 30%;
+        background-color: variables.$primary-color;
+        animation: progress 1.5s ease-in-out infinite;
+    }
+}
+
+@keyframes progress {
+    0% {
+        left: -30%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.title {
+    font-size: 2rem;
+    color: variables.$primary-color;
+    margin-bottom: variables.$spacing-unit * 4;
+    text-align: center;
+}
+
+.results {
+    background-color: white;
+    border-radius: variables.$border-radius;
+    padding: variables.$spacing-unit * 4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+    margin-bottom: variables.$spacing-unit * 4;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    h2 {
+        color: variables.$secondary-color;
+        margin-bottom: variables.$spacing-unit * 2;
+    }
+}
+
+.recommendations {
+    list-style: none;
+    padding: 0;
+
+    li {
+        margin-bottom: variables.$spacing-unit * 2;
+        padding-left: variables.$spacing-unit * 3;
+        position: relative;
+
+        &:before {
+            content: '•';
+            position: absolute;
+            left: variables.$spacing-unit;
+            color: variables.$accent-color;
+        }
+    }
+}
+
+.actions {
+    margin-top: variables.$spacing-unit * 4;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    background-color: variables.$primary-color;
+    color: white;
+    padding: variables.$spacing-unit * 1.5 variables.$spacing-unit * 3;
+    border-radius: variables.$border-radius;
+    border: none;
+    font-size: variables.$font-size-base;
+    cursor: pointer;
+    transition: background-color variables.$transition-speed variables.$transition-ease;
+
+    &:hover {
+        background-color: color.adjust(variables.$primary-color, $lightness: -10%);
+    }
+} 

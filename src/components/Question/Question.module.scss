@@ -1,0 +1,120 @@
+@use '@/app/styles/variables';
+@use '@/app/styles/responsive';
+@use 'sass:color';
+
+.question {
+    background-color: white;
+    border-radius: variables.$border-radius;
+    padding: variables.$spacing-unit * 4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    outline: none;
+
+    @include responsive.mobile {
+        padding: variables.$spacing-unit * 2;
+    }
+}
+
+.questionText {
+    font-size: variables.$font-size-large;
+    color: variables.$primary-color;
+    margin-bottom: variables.$spacing-unit * 4;
+    text-align: center;
+
+    @include responsive.mobile {
+        font-size: variables.$font-size-base;
+        margin-bottom: variables.$spacing-unit * 2;
+    }
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-unit * 2;
+    margin-bottom: variables.$spacing-unit * 4;
+
+    @include responsive.mobile {
+        gap: variables.$spacing-unit;
+    }
+}
+
+.option {
+    padding: variables.$spacing-unit * 2;
+    border: 2px solid variables.$border-color;
+    border-radius: variables.$border-radius;
+    background: none;
+    cursor: pointer;
+    transition: all variables.$transition-speed variables.$transition-ease;
+    text-align: left;
+    font-size: variables.$font-size-base;
+
+    &:hover {
+        border-color: variables.$primary-color;
+    }
+
+    &.selected {
+        background-color: variables.$primary-color;
+        color: white;
+        border-color: variables.$primary-color;
+    }
+
+    &:focus {
+        outline: 2px solid variables.$accent-color;
+        outline-offset: 2px;
+    }
+
+    @include responsive.mobile {
+        padding: variables.$spacing-unit;
+        font-size: variables.$font-size-small;
+    }
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: variables.$spacing-unit * 2;
+
+    @include responsive.mobile {
+        flex-direction: column;
+    }
+}
+
+.navButton {
+    padding: variables.$spacing-unit * 1.5 variables.$spacing-unit * 3;
+    border-radius: variables.$border-radius;
+    border: none;
+    cursor: pointer;
+    transition: background-color variables.$transition-speed variables.$transition-ease;
+    font-size: variables.$font-size-base;
+
+    &.primary {
+        background-color: variables.$primary-color;
+        color: white;
+
+        &:hover:not(:disabled) {
+            background-color: color.adjust(variables.$primary-color, $lightness: -10%);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    &:not(.primary) {
+        background-color: variables.$background-color;
+        color: variables.$text-color;
+
+        &:hover {
+            background-color: color.adjust(variables.$background-color, $lightness: -10%);
+        }
+    }
+
+    @include responsive.mobile {
+        width: 100%;
+        padding: variables.$spacing-unit variables.$spacing-unit * 2;
+    }
+}
+
+.keyboardHelp {
+    margin-bottom: variables.$spacing-unit * 4;
+}
