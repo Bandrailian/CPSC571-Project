@@ -10,7 +10,8 @@ import {
     LineElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    TooltipItem
 } from 'chart.js';
 import { AssessmentResult } from '@/types/assessment';
 import styles from './TrendsVisualization.module.scss';
@@ -31,7 +32,12 @@ type TrendsVisualizationProps = {
 
 export function TrendsVisualization({ assessments }: TrendsVisualizationProps) {
     const chartData = useMemo(() => {
-        const dates = assessments.map(a => 
+        // Sort assessments by date (oldest to newest)
+        const sortedAssessments = [...assessments].sort((a, b) => 
+            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        );
+        
+        const dates = sortedAssessments.map(a => 
             new Date(a.createdAt).toLocaleDateString()
         );
         
@@ -40,26 +46,26 @@ export function TrendsVisualization({ assessments }: TrendsVisualizationProps) {
             datasets: [
                 {
                     label: 'Anxiety Score',
-                    data: assessments.map(a => a.anxietyScore),
+                    data: sortedAssessments.map(a => a.anxietyScore),
                     borderColor: 'rgb(255, 99, 132)',
                     backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 },
                 {
                     label: 'Depression Score',
-                    data: assessments.map(a => a.depressionScore),
+                    data: sortedAssessments.map(a => a.depressionScore),
                     borderColor: 'rgb(53, 162, 235)',
                     backgroundColor: 'rgba(53, 162, 235, 0.5)',
                 },
                 {
                     label: 'Sleep Quality',
-                    data: assessments.map(a => a.lifestyle['1']),
+                    data: sortedAssessments.map(a => a.lifestyle['1']),
                     borderColor: 'rgb(75, 192, 192)',
                     backgroundColor: 'rgba(75, 192, 192, 0.5)',
                     yAxisID: 'y1',
                 },
                 {
                     label: 'Exercise Frequency',
-                    data: assessments.map(a => a.lifestyle['2']),
+                    data: sortedAssessments.map(a => a.lifestyle['2']),
                     borderColor: 'rgb(153, 102, 255)',
                     backgroundColor: 'rgba(153, 102, 255, 0.5)',
                     yAxisID: 'y1',
@@ -85,7 +91,7 @@ export function TrendsVisualization({ assessments }: TrendsVisualizationProps) {
             },
             tooltip: {
                 callbacks: {
-                    label: function(context: any) {
+                    label: function(context: TooltipItem<"line">) {
                         let label = context.dataset.label || '';
                         if (label) {
                             label += ': ';
@@ -129,9 +135,9 @@ export function TrendsVisualization({ assessments }: TrendsVisualizationProps) {
                     text: 'Lifestyle Ratings'
                 },
                 ticks: {
-                    callback: function(value: any) {
+                    callback: function(tickValue: number | string) {
                         const ratings = ['Poor', 'Fair', 'Good', 'Excellent'];
-                        return ratings[value];
+                        return ratings[Number(tickValue)];
                     }
                 }
             },
