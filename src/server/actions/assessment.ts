@@ -111,7 +111,12 @@ Format your recommendations using markdown:
 
 function getPatternInsights(patterns: PatternData[]) {
     return patterns
-        .map(p => `${p.diagnosis.severity} ${p.diagnosis.hasAnxiety ? 'anxiety' : ''}${p.diagnosis.hasDepression ? 'depression' : ''}`)
+        .map(p => {
+            const anxiety = p.diagnosis.hasAnxiety ? `Anxiety(${p.diagnosis.severityAnxiety})` : ''; 
+            const depression = p.diagnosis.hasDepression ? `Depression(${p.diagnosis.severityDepression})` : '';
+ 
+            return [anxiety, depression].filter(Boolean).join(' & ');
+        })
         .join(', ');
 }
 
