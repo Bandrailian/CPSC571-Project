@@ -24,9 +24,13 @@ const AssessmentSchema = new Schema<AssessmentResult>({
     diagnosis: {
         hasAnxiety: Boolean,
         hasDepression: Boolean,
-        severity: {
+        severityAnxiety: {
             type: String,
             enum: ['mild', 'moderate', 'severe', 'none'],
+        },
+        severityDepression: {
+            type: String,
+            enum: ['mild', 'moderate', 'severe', 'none', 'moderately severe'],
         },
     },
     recommendations: [String],
