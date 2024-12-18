@@ -32,7 +32,7 @@ function generateCSV(assessments: AssessmentResult[]): string {
         assessment.diagnosis.severityAnxiety,
         assessment.depressionScore,
         assessment.diagnosis.severityDepression,
-        `${assessment.diagnosis.hasAnxiety ? `Anxiety ${assessment.diagnosis.severityAnxiety}` : ''} ${assessment.diagnosis.hasDepression ? `Depression ${assessment.diagnosis.severityDepression}` : ''}`.trim(),
+        `${assessment.diagnosis.hasAnxiety ? `Anxiety ${assessment.diagnosis.severityAnxiety}, ` : ''}${assessment.diagnosis.hasDepression ? `Depression ${assessment.diagnosis.severityDepression}` : ''}`.trim(),
         assessment.lifestyle.sleep,
         assessment.lifestyle.exercise,
         assessment.lifestyle.social
