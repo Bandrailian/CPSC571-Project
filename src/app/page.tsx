@@ -1,17 +1,30 @@
 'use client';
 
-import { useUser } from '@clerk/nextjs';
+import { useUser, useClerk } from '@clerk/nextjs';
 import Link from 'next/link';
 import styles from './page.module.scss';
 
 export default function Home() {
     const { isSignedIn, user } = useUser();
+    const { signOut } = useClerk();
+
+    const handleSignOut = () => {
+        signOut();
+    };
 
     return (
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1>Mental Health Assessment Platform</h1>
                 <p>Track your mental well-being with professional assessment tools</p>
+                {isSignedIn && (
+                    <button 
+                        onClick={handleSignOut}
+                        className={styles.signOutButton}
+                    >
+                        Sign Out
+                    </button>
+                )}
             </header>
 
             <main className={styles.main}>

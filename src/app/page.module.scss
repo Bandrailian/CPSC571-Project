@@ -11,6 +11,7 @@
     padding: variables.$spacing-unit * 8 variables.$spacing-unit * 4;
     background: linear-gradient(to right, variables.$primary-color, variables.$secondary-color);
     color: white;
+    position: relative;
 
     h1 {
         font-size: 2.5rem;
@@ -108,5 +109,23 @@
 
     &:hover {
         background-color: rgba(variables.$primary-color, 0.1);
+    }
+}
+
+.signOutButton {
+    position: absolute;
+    top: variables.$spacing-unit * 2;
+    right: variables.$spacing-unit * 2;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: variables.$spacing-unit variables.$spacing-unit * 2;
+    border-radius: variables.$border-radius;
+    cursor: pointer;
+    transition: all variables.$transition-speed variables.$transition-ease;
+
+    &:hover {
+        background-color: white;
+        color: variables.$primary-color;
     }
 }
