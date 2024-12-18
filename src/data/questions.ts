@@ -194,7 +194,7 @@ export const questions = [
     },
     {
         id: 'lifestyle-2',
-        text: 'Which of the following best describe how often you wake up in the middle of the night?',
+        text: 'Which of the following best describes how often you wake up in the middle of the night?',
         type: 'lifestyle',
         category: 'sleep-hygiene',
         options: [
