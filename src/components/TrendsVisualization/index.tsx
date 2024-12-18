@@ -58,16 +58,26 @@ export function TrendsVisualization({ assessments }: TrendsVisualizationProps) {
                 },
                 {
                     label: 'Sleep Quality',
-                    data: sortedAssessments.map(a => a.lifestyle['1']),
+                    data: sortedAssessments.map(a => 
+                        Math.round((a.lifestyle['1'] + a.lifestyle['2']) / 2)),
                     borderColor: 'rgb(75, 192, 192)',
                     backgroundColor: 'rgba(75, 192, 192, 0.5)',
                     yAxisID: 'y1',
                 },
                 {
                     label: 'Exercise Frequency',
-                    data: sortedAssessments.map(a => a.lifestyle['2']),
+                    data: sortedAssessments.map(a => 
+                        Math.round((a.lifestyle['3'] + a.lifestyle['4']) / 2)),
                     borderColor: 'rgb(153, 102, 255)',
                     backgroundColor: 'rgba(153, 102, 255, 0.5)',
+                    yAxisID: 'y1',
+                },
+                {
+                    label: 'Quality of Experiences',
+                    data: sortedAssessments.map(a => 
+                        Math.round((a.lifestyle['5'] + a.lifestyle['6']) / 2)),
+                    borderColor: 'rgb(249, 234, 31)',
+                    backgroundColor: 'rgba(221, 215, 23, 0.5)',
                     yAxisID: 'y1',
                 }
             ],
@@ -126,7 +136,7 @@ export function TrendsVisualization({ assessments }: TrendsVisualizationProps) {
                 display: true,
                 position: 'right' as const,
                 min: 0,
-                max: 3,
+                max: 4,
                 grid: {
                     drawOnChartArea: false, // only want the grid lines for one axis to show up
                 },
