@@ -17,9 +17,10 @@ function generateCSV(assessments: AssessmentResult[]): string {
     const headers = [
         'Date',
         'Anxiety Score',
+        'Anxiety Severity',
         'Depression Score',
+        'Depression Severity',
         'Diagnosis',
-        'Severity',
         'Sleep Quality',
         'Exercise Frequency',
         'Social Activity'
@@ -28,9 +29,10 @@ function generateCSV(assessments: AssessmentResult[]): string {
     const rows = assessments.map(assessment => [
         new Date(assessment.createdAt).toLocaleDateString(),
         assessment.anxietyScore,
+        assessment.diagnosis.severityAnxiety,
         assessment.depressionScore,
-        `${assessment.diagnosis.hasAnxiety ? 'Anxiety' : ''} ${assessment.diagnosis.hasDepression ? 'Depression' : ''}`.trim(),
-        assessment.diagnosis.severity,
+        assessment.diagnosis.severityDepression,
+        `${assessment.diagnosis.hasAnxiety ? `Anxiety ${assessment.diagnosis.severityAnxiety}` : ''} ${assessment.diagnosis.hasDepression ? `Depression ${assessment.diagnosis.severityDepression}` : ''}`.trim(),
         assessment.lifestyle.sleep,
         assessment.lifestyle.exercise,
         assessment.lifestyle.social

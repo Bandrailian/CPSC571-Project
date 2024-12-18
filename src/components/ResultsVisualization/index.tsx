@@ -43,10 +43,10 @@ export function ResultsVisualization({ result }: ResultsVisualizationProps) {
                 <h3>Diagnosis</h3>
                 <div className={styles.diagnosis}>
                     {result.diagnosis.hasAnxiety && (
-                        <p>Signs of {result.diagnosis.severity} anxiety detected</p>
+                        <p>Signs of {result.diagnosis.severityAnxiety} anxiety detected</p>
                     )}
                     {result.diagnosis.hasDepression && (
-                        <p>Signs of {result.diagnosis.severity} depression detected</p>
+                        <p>Signs of {result.diagnosis.severityDepression} depression detected</p>
                     )}
                     {!result.diagnosis.hasAnxiety && !result.diagnosis.hasDepression && (
                         <p>No significant signs of anxiety or depression detected</p>
