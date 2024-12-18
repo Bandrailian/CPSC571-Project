@@ -1,18 +1,11 @@
-export type QuestionType = {
-    id: string;
-    text: string;
-    type: 'anxiety' | 'depression' | 'lifestyle';
-    options: {
-        text: string;
-        value: number;
-    }[];
-};
+import { LifestyleData } from './common';
 
-export type AssessmentResult = {
+export interface AssessmentResult {
+    _id?: string;
     user: string;
     anxietyScore: number;
     depressionScore: number;
-    lifestyle: Record<string, any>;
+    lifestyle: LifestyleData;
     diagnosis: {
         hasAnxiety: boolean;
         hasDepression: boolean;
@@ -20,6 +13,6 @@ export type AssessmentResult = {
         severityDepression: 'mild' | 'moderate' | 'moderately severe' | 'severe' | 'none';
     };
     recommendations: string[];
-    aiInsights: string;
     createdAt: Date;
-}; 
+    aiInsights: string;
+} 

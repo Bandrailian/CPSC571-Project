@@ -1,10 +1,11 @@
 'use client';
 
 import { createContext, useContext, useReducer, ReactNode } from 'react';
+import { QuestionAnswer } from '@/types/common';
 
 export type AssessmentState = {
   currentQuestion: number;
-  answers: Record<string, any>;
+  answers: Record<string, QuestionAnswer>;
   section: 'anxiety' | 'depression' | 'lifestyle';
   isComplete: boolean;
 };
@@ -12,7 +13,7 @@ export type AssessmentState = {
 type AssessmentAction = 
   | { type: 'NEXT_QUESTION' }
   | { type: 'PREV_QUESTION' }
-  | { type: 'SET_ANSWER'; payload: { questionId: string; answer: any } }
+  | { type: 'SET_ANSWER'; payload: { questionId: string; answer: QuestionAnswer } }
   | { type: 'JUMP_TO_QUESTION'; payload: number }
   | { type: 'SET_SECTION'; payload: AssessmentState['section'] }
   | { type: 'COMPLETE_ASSESSMENT' };

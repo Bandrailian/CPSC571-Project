@@ -1,9 +1,10 @@
 'use client';
 
 import { useAssessment } from '@/contexts/AssessmentContext';
+import { AssessmentSection } from '@/types/common';
 import styles from './Breadcrumb.module.scss';
 
-const sections = ['Anxiety', 'Depression', 'Lifestyle'];
+const sections = ['Anxiety', 'Depression', 'Lifestyle'] as const;
 
 export function Breadcrumb() {
     const { state, dispatch } = useAssessment();
@@ -15,7 +16,7 @@ export function Breadcrumb() {
         if (index <= currentSectionIndex) {
             dispatch({
                 type: 'SET_SECTION',
-                payload: sections[index].toLowerCase() as any
+                payload: sections[index].toLowerCase() as AssessmentSection
             });
         }
     };

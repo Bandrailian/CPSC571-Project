@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 import { useAssessment } from '@/contexts/AssessmentContext';
 import { questions } from '@/data/questions';
-import { useRouter } from 'next/navigation';
 
 export function useKeyboardNavigation() {
     const { state, dispatch } = useAssessment();
@@ -38,7 +37,10 @@ export function useKeyboardNavigation() {
                             type: 'SET_ANSWER',
                             payload: {
                                 questionId: currentQuestion.id,
-                                answer: { value: currentQuestion.options[optionIndex].value }
+                                answer: {
+                                    value: currentQuestion.options[optionIndex].value,
+                                    text: currentQuestion.options[optionIndex].text
+                                }
                             }
                         });
                     }

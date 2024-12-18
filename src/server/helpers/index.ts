@@ -1,3 +1,3 @@
-export function parseToJSON<T extends ({} | undefined | null)>(arg: T | undefined | null): T {
-    return (!!arg ? JSON.parse(JSON.stringify(arg)) : null);
+export function parseToJSON<T>(doc: T): T {
+    return JSON.parse(JSON.stringify(doc));
 }
