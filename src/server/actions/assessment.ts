@@ -84,7 +84,7 @@ Context:
 Based on this comprehensive analysis:
 1. Provide 3-5 specific, actionable recommendations
 2. Consider both immediate coping strategies and long-term improvement plans
-3. Address specific lifestyle factors (sleep, exercise, social activity)
+3. Address specific lifestyle factors (sleep, exercise, social activity, diet, time usage, and habits)
 4. Prioritize evidence-based interventions
 5. Include both mental health and lifestyle recommendations
 
@@ -134,31 +134,35 @@ async function determineDiagnosis(
     const diagnosis: AssessmentResult['diagnosis'] = {
         hasAnxiety: false,
         hasDepression: false,
-        severity: 'none'
+        severityAnxiety: 'none',
+        severityDepression: 'none'
     };
 
     const aiInsights = await getAIInsights(answers);
 
     if (anxietyScore >= 15) {
         diagnosis.hasAnxiety = true;
-        diagnosis.severity = 'severe';
+        diagnosis.severityAnxiety = 'severe';
     } else if (anxietyScore >= 10) {
         diagnosis.hasAnxiety = true;
-        diagnosis.severity = 'moderate';
+        diagnosis.severityAnxiety = 'moderate';
     } else if (anxietyScore >= 5) {
         diagnosis.hasAnxiety = true;
-        diagnosis.severity = 'mild';
+        diagnosis.severityAnxiety = 'mild';
     }
 
     if (depressionScore >= 20) {
         diagnosis.hasDepression = true;
-        diagnosis.severity = 'severe';
+        diagnosis.severityDepression = 'severe';
     } else if (depressionScore >= 15) {
         diagnosis.hasDepression = true;
-        diagnosis.severity = 'moderate';
+        diagnosis.severityDepression = 'moderately severe';
+    } else if (depressionScore >= 10) {
+        diagnosis.hasDepression = true;
+        diagnosis.severityDepression = 'moderate';
     } else if (depressionScore >= 5) {
         diagnosis.hasDepression = true;
-        diagnosis.severity = 'mild';
+        diagnosis.severityDepression = 'mild';
     }
 
     return {

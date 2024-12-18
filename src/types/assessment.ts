@@ -9,7 +9,8 @@ export interface AssessmentResult {
     diagnosis: {
         hasAnxiety: boolean;
         hasDepression: boolean;
-        severity: 'none' | 'mild' | 'moderate' | 'severe';
+        severityAnxiety: 'mild' | 'moderate' | 'severe' | 'none';
+        severityDepression: 'mild' | 'moderate' | 'moderately severe' | 'severe' | 'none';
     };
     recommendations: string[];
     createdAt: Date;

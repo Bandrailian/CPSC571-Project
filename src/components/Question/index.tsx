@@ -69,14 +69,6 @@ export function Question({ question, onNext, onPrevious }: QuestionProps) {
             >
                 {question.text}
             </h2>
-            <div className={styles.keyboardHelp} aria-hidden="true">
-                <p>Keyboard shortcuts:</p>
-                <ul>
-                    <li>← Previous question</li>
-                    <li>→ Next question</li>
-                    <li>1-4 Select option</li>
-                </ul>
-            </div>
             
             <div 
                 className={styles.options}
