@@ -16,7 +16,8 @@ export type AssessmentResult = {
     diagnosis: {
         hasAnxiety: boolean;
         hasDepression: boolean;
-        severity: 'mild' | 'moderate' | 'severe' | 'none';
+        severityAnxiety: 'mild' | 'moderate' | 'severe' | 'none';
+        severityDepression: 'mild' | 'moderate' | 'moderately severe' | 'severe' | 'none';
     };
     recommendations: string[];
     aiInsights: string;

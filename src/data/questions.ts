@@ -2,7 +2,7 @@ export const questions = [
     // Anxiety questions (GAD-7)
     {
         id: 'anxiety-1',
-        text: 'Feeling nervous, anxious, or on edge',
+        text: 'How often have you experienced feeling nervous, anxious, or on edge?',
         type: 'anxiety',
         options: [
             { text: 'Not at all', value: 0 },
@@ -13,7 +13,7 @@ export const questions = [
     },
     {
         id: 'anxiety-2',
-        text: 'Not being able to stop or control worrying',
+        text: 'How often have you felt unable to stop or control worrying?',
         type: 'anxiety',
         options: [
             { text: 'Not at all', value: 0 },
@@ -24,7 +24,7 @@ export const questions = [
     },
     {
         id: 'anxiety-3',
-        text: 'Worrying too much about different things',
+        text: 'How often have you been worrying too much about multiple different things?',
         type: 'anxiety',
         options: [
             { text: 'Not at all', value: 0 },
@@ -35,7 +35,7 @@ export const questions = [
     },
     {
         id: 'anxiety-4',
-        text: 'Trouble relaxing',
+        text: 'How often have you felt that you\'ve had trouble relaxing?',
         type: 'anxiety',
         options: [
             { text: 'Not at all', value: 0 },
@@ -46,7 +46,7 @@ export const questions = [
     },
     {
         id: 'anxiety-5',
-        text: 'Being so restless that it\'s hard to sit still',
+        text: 'How often have you felt so restless that it\'s hard to sit still?',
         type: 'anxiety',
         options: [
             { text: 'Not at all', value: 0 },
@@ -57,7 +57,7 @@ export const questions = [
     },
     {
         id: 'anxiety-6',
-        text: 'Becoming easily annoyed or irritable',
+        text: 'How likely are you to become easily annoyed or irritable?',
         type: 'anxiety',
         options: [
             { text: 'Not at all', value: 0 },
@@ -68,7 +68,7 @@ export const questions = [
     },
     {
         id: 'anxiety-7',
-        text: 'Feeling afraid as if something awful might happen',
+        text: 'How often have you felt afraid, as if something awful might happen?',
         type: 'anxiety',
         options: [
             { text: 'Not at all', value: 0 },
@@ -81,7 +81,7 @@ export const questions = [
     // Depression questions (PHQ-9)
     {
         id: 'depression-1',
-        text: 'Little interest or pleasure in doing things',
+        text: 'How often have you felt little interest or pleasure in doing things?',
         type: 'depression',
         options: [
             { text: 'Not at all', value: 0 },
@@ -92,7 +92,7 @@ export const questions = [
     },
     {
         id: 'depression-2',
-        text: 'Feeling down, depressed, or hopeless',
+        text: 'How often have you felt down, depressed, or hopeless?',
         type: 'depression',
         options: [
             { text: 'Not at all', value: 0 },
@@ -103,7 +103,7 @@ export const questions = [
     },
     {
         id: 'depression-3',
-        text: 'Trouble falling or staying asleep, or sleeping too much',
+        text: 'How likely are you to experience either having trouble falling/staying asleep, or sleeping too much?',
         type: 'depression',
         options: [
             { text: 'Not at all', value: 0 },
@@ -114,7 +114,7 @@ export const questions = [
     },
     {
         id: 'depression-4',
-        text: 'Feeling tired or having little energy',
+        text: 'How often do you feel tired or as if you are low on energy?',
         type: 'depression',
         options: [
             { text: 'Not at all', value: 0 },
@@ -125,7 +125,7 @@ export const questions = [
     },
     {
         id: 'depression-5',
-        text: 'Poor appetite or overeating',
+        text: 'How likely are you to either have a poor appetite or to be overeating?',
         type: 'depression',
         options: [
             { text: 'Not at all', value: 0 },
@@ -136,7 +136,7 @@ export const questions = [
     },
     {
         id: 'depression-6',
-        text: 'Feeling bad about yourself or that you are a failure',
+        text: 'How often are you feeling bad about yourself or that you are a failure?',
         type: 'depression',
         options: [
             { text: 'Not at all', value: 0 },
@@ -147,7 +147,7 @@ export const questions = [
     },
     {
         id: 'depression-7',
-        text: 'Trouble concentrating on things',
+        text: 'How often are you having trouble concentrating on things?',
         type: 'depression',
         options: [
             { text: 'Not at all', value: 0 },
@@ -158,7 +158,7 @@ export const questions = [
     },
     {
         id: 'depression-8',
-        text: 'Moving or speaking so slowly that other people could have noticed',
+        text: 'How often have you been moving or speaking either very slowly or quickly, such that other people might have noticed or said something?',
         type: 'depression',
         options: [
             { text: 'Not at all', value: 0 },
@@ -169,7 +169,7 @@ export const questions = [
     },
     {
         id: 'depression-9',
-        text: 'Thoughts that you would be better off dead or of hurting yourself',
+        text: 'How often have you had thoughts that you would be better off dead, or had thoughts of hurting yourself?',
         type: 'depression',
         options: [
             { text: 'Not at all', value: 0 },
@@ -182,52 +182,69 @@ export const questions = [
     // Lifestyle questions
     {
         id: 'lifestyle-1',
-        text: 'How many hours of sleep do you typically get?',
+        text: 'How many hours of sleep did you typically get each night on average?',
         type: 'lifestyle',
+        category: 'sleep-hygiene',
         options: [
-            { text: 'Less than 5 hours', value: 0 },
-            { text: '5-6 hours', value: 1 },
-            { text: '7-8 hours', value: 2 },
-            { text: 'More than 8 hours', value: 3 },
+            { text: 'At least 8 hours', value: 3 },
+            { text: 'Between 6 and 8 hours', value: 2 },
+            { text: 'Between 4 and 6 hours', value: 1 },
+            { text: 'Less than 4 hours', value: 0 },
         ],
     },
     {
         id: 'lifestyle-2',
-        text: 'How often do you exercise?',
+        text: 'Which of the following best describe how often you wake up in the middle of the night?',
         type: 'lifestyle',
+        category: 'sleep-hygiene',
         options: [
-            { text: 'Never', value: 0 },
-            { text: '1-2 times per week', value: 1 },
-            { text: '3-4 times per week', value: 2 },
-            { text: '5 or more times per week', value: 3 },
+            { text: 'I sleep well until the morning', value: 3 },
+            { text: 'I might wake up rarely, but can get back to sleep easily', value: 2 },
+            { text: 'I wake up often, but can still get back to sleep easily', value: 1 },
+            { text: 'I wake up often and struggle to get back to sleep', value: 0 },
         ],
     },
     {
         id: 'lifestyle-3',
-        text: 'How would you rate your stress levels?',
+        text: 'How many times per week did you exercise?',
         type: 'lifestyle',
+        category: 'exercise',
         options: [
-            { text: 'Very high', value: 0 },
-            { text: 'High', value: 1 },
-            { text: 'Moderate', value: 2 },
-            { text: 'Low', value: 3 },
+            { text: 'Never', value: 0 },
+            { text: '1 or 2 times', value: 1 },
+            { text: '3 or 4 times', value: 2 },
+            { text: '5 or more times', value: 3 },
         ],
     },
     {
         id: 'lifestyle-4',
-        text: 'How often do you engage in social activities?',
+        text: 'How many hours per week would you say you exercise on average?',
         type: 'lifestyle',
+        category: 'exercise',
         options: [
-            { text: 'Rarely or never', value: 0 },
-            { text: 'Once a month', value: 1 },
-            { text: 'Weekly', value: 2 },
-            { text: 'Multiple times per week', value: 3 },
+            { text: 'None', value: 0 },
+            { text: 'Less than * hours', value: 1 },
+            { text: 'Between * and * hours', value: 2 },
+            { text: 'At least * hours', value: 3 },
         ],
     },
     {
         id: 'lifestyle-5',
+        text: 'How often each week did you engage in social activities with friends or family?',
+        type: 'lifestyle',
+        category: 'social',
+        options: [
+            { text: 'Never', value: 0 },
+            { text: 'Once', value: 1 },
+            { text: 'Twice', value: 2 },
+            { text: 'Three or more', value: 3 },
+        ],
+    },
+    {
+        id: 'lifestyle-6',
         text: 'How would you rate your work-life balance?',
         type: 'lifestyle',
+        category: 'social',
         options: [
             { text: 'Poor', value: 0 },
             { text: 'Fair', value: 1 },

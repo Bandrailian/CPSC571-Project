@@ -41,14 +41,14 @@ export function ProgressTracker() {
                         style={{ width: `${progress}%` }}
                     />
                 </div>
-                <span className={styles.percentage}>{progress}% Complete</span>
+                <span className={styles.percentage}>{progress}% of Total Questions Complete</span>
             </div>
             
             <div className={styles.sections}>
                 {sectionProgress.map(({ section, progress }) => (
                     <div key={section} className={styles.section}>
                         <span className={styles.label}>
-                            {section.charAt(0).toUpperCase() + section.slice(1)}
+                            {section.charAt(0).toUpperCase() + section.slice(1) + ' Questions'}
                         </span>
                         <div className={styles.sectionBar}>
                             <div 
