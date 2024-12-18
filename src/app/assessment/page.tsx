@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
 import { Question } from '@/components/Question';
-import { Breadcrumb } from '@/components/Breadcrumb';
 import { useAssessment } from '@/contexts/AssessmentContext';
 import { questions } from '@/data/questions';
 import { validateAssessment } from '@/utils/validation';
@@ -53,12 +52,12 @@ export default function AssessmentPage() {
         <AssessmentErrorBoundary>
             <div className={styles.container}>
                 <div className={styles.info} aria-hidden="true">
-                Reflect back upon the last two weeks. Answer the following
+                {`Reflect back upon the last two weeks. Answer the following
                 questions based on how often it has applied to you, or your
                 best guess of an estimated average. Questions within the 
                 'Anxiety' and 'Depression' sections are taken from the GAD-7
                 and the PHQ-9 respectively. 'Lifestyle' questions will provide 
-                insight into factors that commonly affect mental health status.
+                insight into factors that commonly affect mental health status.`}
                 </div>
                 <div className={styles.keyboardHelp} aria-hidden="true">
                 <p>Keyboard Shortcuts:</p>
