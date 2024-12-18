@@ -223,9 +223,9 @@ export const questions = [
         category: 'exercise',
         options: [
             { text: 'None', value: 0 },
-            { text: 'Less than * hours', value: 1 },
-            { text: 'Between * and * hours', value: 2 },
-            { text: 'At least * hours', value: 3 },
+            { text: 'Less than 1 hour', value: 1 },
+            { text: 'Between 1 and 3 hours', value: 2 },
+            { text: 'At least 3 hours', value: 3 },
         ],
     },
     {
@@ -242,14 +242,14 @@ export const questions = [
     },
     {
         id: 'lifestyle-6',
-        text: 'How would you rate your work-life balance?',
+        text: 'How often each week do you participate in hobbies or activities that you enjoy?',
         type: 'lifestyle',
         category: 'social',
         options: [
-            { text: 'Poor', value: 0 },
-            { text: 'Fair', value: 1 },
-            { text: 'Good', value: 2 },
-            { text: 'Excellent', value: 3 },
+            { text: 'Never', value: 0 },
+            { text: 'Once a week', value: 1 },
+            { text: 'A few days each week', value: 2 },
+            { text: 'Almost daily', value: 3 },
         ],
     }
 ]; 
