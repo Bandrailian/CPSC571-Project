@@ -223,9 +223,9 @@ export const questions = [
         category: 'exercise',
         options: [
             { text: 'None', value: 0 },
-            { text: 'Less than 1 hour', value: 1 },
-            { text: 'Between 1 and 3 hours', value: 2 },
-            { text: 'At least 3 hours', value: 3 },
+            { text: 'Less than one hour', value: 1 },
+            { text: 'Between one and three hours', value: 2 },
+            { text: 'At least three hours', value: 3 },
         ],
     },
     {
@@ -250,6 +250,30 @@ export const questions = [
             { text: 'Once a week', value: 1 },
             { text: 'A few days each week', value: 2 },
             { text: 'Almost daily', value: 3 },
+        ],
+    },
+    {
+        id: 'lifestyle-7',
+        text: 'How many servings of caffeine do you consume daily?',
+        type: 'lifestyle',
+        category: 'social',
+        options: [
+            { text: 'At most one', value: 3 },
+            { text: 'Two in a day', value: 2 },
+            { text: 'three times a day', value: 1 },
+            { text: 'More than three', value: 0 },
+        ],
+    },
+    {
+        id: 'lifestyle-8',
+        text: 'In a typical week how much alcohol do you consume?',
+        type: 'lifestyle',
+        category: 'social',
+        options: [
+            { text: 'At most 2 drinks', value: 3 },
+            { text: 'Around 3 or 4 drinks', value: 2 },
+            { text: 'Around 5 or 6 drinks', value: 1 },
+            { text: 'At least 7 drinks', value: 0 },
         ],
     }
 ]; 
