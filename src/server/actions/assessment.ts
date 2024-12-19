@@ -81,12 +81,28 @@ Context:
     `${new Date(previousPatterns[index].date).toLocaleDateString()}: ${Math.round(score * 100)}%`
   ).join(', ')}
 
-Based on this comprehensive analysis:
-1. Provide 3-5 specific, actionable recommendations
-2. Consider both immediate coping strategies and long-term improvement plans
-3. Address specific lifestyle factors (sleep, exercise, social activity, diet, time usage, and habits)
-4. Prioritize evidence-based interventions
-5. Include both mental health and lifestyle recommendations
+Consider the presence and severity of either anxiety or depression:
+- If one is much more sever than the other focus on it
+- If one is very low, don't mention it during the recommendations
+
+Consider which of the first 16 questions have the highest score:
+- Questions 1, 2, & 4 show signs of excessive worry
+- Questions 3, 13, & 14 show need for better organization
+- Questions 8, 9, 12, & 16 suggest need for engaging and/or social activities
+- Questions 10, 11, & 15 suggest need for more sleep
+- Questions 5, 6, 7, & 16 show signs of instability and need for self care
+
+Consider the last 6 questions:
+- If questions 17 & 18 have low scores sleep should be improved
+- If questions 19 & 20 have low scores more exercise should be recommended
+- If questions 21 & 22 have low scores more engaging and/or social activities are needed
+
+  Based on this comprehensive analysis:
+1. Provide the best 1-3 specific, actionable recommendations
+2. Encourage improvements in lifestyle scores and decreases in anxiety or depression
+3. Mention if any changes made so far have had a positive impact
+4. If scores for questions 17-22 are high, consider other lifestyle changes to recommend
+5. If anxiety and depression severity scores are high and no changes occur, recommend speaking to a doctor
 
 Format your recommendations using markdown:
 - Use **bold** for key points
