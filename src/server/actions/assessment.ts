@@ -86,10 +86,10 @@ Consider the presence and severity of either anxiety or depression:
 - If one is very low, don't mention it during the recommendations
 
 Consider which of the first 16 questions have the highest score:
-- Questions 1, 2, & 4 show signs of excessive worry
+- Questions 1, 2, & 4 show signs of excessive worry and need for relaxation
 - Questions 3, 13, & 14 show need for better organization
 - Questions 8, 9, 12, & 16 suggest need for engaging and/or social activities
-- Questions 10, 11, & 15 suggest need for more sleep
+- Questions 10, 11, & 15 suggest need for more sleep or better diet to improve energy levels
 - Questions 5, 6, 7, & 16 show signs of instability and need for self care
 
 Consider the last 8 questions, A low score is 0 or 1:
@@ -105,6 +105,7 @@ Consider the last 8 questions, A low score is 0 or 1:
 3. Mention if any changes made so far have had a positive impact
 4. If scores for questions 17-22 are high, consider other lifestyle changes to recommend
 5. If anxiety and depression severity scores are high (10+) and no changes occur, recommend speaking to a doctor
+6. If a large increase in anxiety and depression severity scores occur, reassure the user
 
 Format your recommendations using markdown:
 - Use **bold** for key points
