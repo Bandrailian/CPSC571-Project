@@ -2,6 +2,8 @@
 
 A comprehensive web application for mental health self-assessment using standardized GAD-7 and PHQ-9 questionnaires, enhanced with AI-powered analysis and personalized recommendations.
 
+[Live Demo](https://cpsc-571-project.vercel.app/)
+
 ## Features
 
 - Professional mental health assessments (GAD-7 and PHQ-9)
@@ -24,7 +26,7 @@ npm install -g yarn
 
 ## Environment Variables
 
-Create a `.env.local` file in the root directory with the following variables:
+Create a `.env.local` file in the root directory with the following variables (replace with the values from the submitted .env.local file):
 
 ```env
 OPENAI_API_KEY = <OPENAI_API_KEY>
