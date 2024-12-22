@@ -12,9 +12,9 @@ const openai = new OpenAI();
 
 type AssessmentAnswers = Record<string, QuestionAnswer>;
 type PatternData = {
-  embedding: number[];
-  diagnosis: AssessmentResult['diagnosis'];
-  date: Date;
+    embedding: number[];
+    diagnosis: AssessmentResult['diagnosis'];
+    date: Date;
 };
 
 function calculateAnxietyScore(answers: Record<string, QuestionAnswer>): number {
@@ -49,17 +49,18 @@ async function getAIRecommendations(
     diagnosis: AssessmentResult['diagnosis'],
     previousAssessments: AssessmentResult[]
 ) {
-    const currentAnswersEmbedding = await getEmbedding(JSON.stringify(answers));
-    
-    const previousPatterns: PatternData[] = await Promise.all(
-        previousAssessments.map(async (assessment) => ({
-            embedding: await getEmbedding(JSON.stringify(assessment)),
-            diagnosis: assessment.diagnosis,
-            date: assessment.createdAt
-        }))
-    );
+    const [currentAnswersEmbedding, previousPatterns] = await Promise.all([
+        getEmbedding(JSON.stringify(answers)),
+        Promise.all(
+            previousAssessments.map(async (assessment) => ({
+                embedding: await getEmbedding(JSON.stringify(assessment)),
+                diagnosis: assessment.diagnosis,
+                date: assessment.createdAt
+            }))
+        ) as Promise<PatternData[]>
+    ])
 
-    const similarityScores = previousPatterns.map(pattern => 
+    const similarityScores = previousPatterns.map(pattern =>
         calculateSimilarity(currentAnswersEmbedding, pattern.embedding)
     );
 
@@ -77,9 +78,9 @@ ${JSON.stringify(extractLifestyleAnswers(answers), null, 2)}
 Context:
 - User has ${previousAssessments.length} previous assessments
 - ${previousPatterns.length > 0 ? 'Shows pattern of ' + getPatternInsights(previousPatterns) : 'First assessment'}
-- Similarity to previous assessments (based on embeddings): ${similarityScores.map((score, index) => 
-    `${new Date(previousPatterns[index].date).toLocaleDateString()}: ${Math.round(score * 100)}%`
-  ).join(', ')}
+- Similarity to previous assessments (based on embeddings): ${similarityScores.map((score, index) =>
+        `${new Date(previousPatterns[index].date).toLocaleDateString()}: ${Math.round(score * 100)}%`
+    ).join(', ')}
 
 Consider the presence and severity of either anxiety or depression:
 - If one is much more severe than the other focus on it
@@ -146,8 +147,8 @@ function extractLifestyleAnswers(answers: AssessmentAnswers) {
 }
 
 async function determineDiagnosis(
-    anxietyScore: number, 
-    depressionScore: number, 
+    anxietyScore: number,
+    depressionScore: number,
     answers: AssessmentAnswers
 ) {
     const diagnosis: AssessmentResult['diagnosis'] = {
@@ -194,16 +195,18 @@ export async function saveAssessment(
     answers: AssessmentAnswers
 ): Promise<AssessmentResult> {
     const user = (await getAuthenticatedUser())._id;
-    
-    const previousAssessments = await (await Assessment).find({ user })
-        .sort({ createdAt: -1 })
-        .limit(5)
-        .lean();
 
     const anxietyScore = calculateAnxietyScore(answers);
     const depressionScore = calculateDepressionScore(answers);
-    const diagnosis = await determineDiagnosis(anxietyScore, depressionScore, answers);
-    
+
+    const [previousAssessments, diagnosis] = await Promise.all([
+        (await Assessment).find({ user })
+            .sort({ createdAt: -1 })
+            .limit(5)
+            .lean(),
+        determineDiagnosis(anxietyScore, depressionScore, answers)
+    ]);
+
     const recommendations = await getAIRecommendations(answers, diagnosis, previousAssessments);
 
     const assessment: Partial<AssessmentResult> = {
@@ -215,7 +218,7 @@ export async function saveAssessment(
         recommendations,
         aiInsights: diagnosis.aiInsights,
     };
-    
+
     const result = await (await Assessment).create(assessment);
     return parseToJSON(result);
 }
@@ -223,8 +226,8 @@ export async function saveAssessment(
 export async function fetchAssessmentsAction() {
     const user = (await getAuthenticatedUser())._id;
     const assessments = await (await Assessment)
-    .find({ user })
-    .sort({ createdAt: -1 })
-    .lean();
+        .find({ user })
+        .sort({ createdAt: -1 })
+        .lean();
     return parseToJSON({ assessments }).assessments;
 }
