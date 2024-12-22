@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mental Health Assessment Platform
 
-## Getting Started
+A comprehensive web application for mental health self-assessment using standardized GAD-7 and PHQ-9 questionnaires, enhanced with AI-powered analysis and personalized recommendations.
 
-First, run the development server:
+[Live Demo](https://cpsc-571-project.vercel.app/)
 
+## Features
+
+- Professional mental health assessments (GAD-7 and PHQ-9)
+- Secure user authentication
+- AI-enhanced analysis and personalized recommendations
+- Progress tracking and visualization
+- Data export capabilities
+- Lifestyle factor analysis
+
+## Prerequisites
+
+Before you begin, ensure you have installed:
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- Yarn package manager
+
+To install Yarn, run:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install -g yarn
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env.local` file in the root directory with the following variables (replace with the values from the submitted .env.local file):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+OPENAI_API_KEY = <OPENAI_API_KEY>
+DATABASE_URL = <DATABASE_URL>
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = <NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY>
+CLERK_SECRET_KEY = <CLERK_SECRET_KEY>
+```
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Bandrailian/CPSC571-Project.git
+cd CPSC571-Project
+```
+
+2. Install dependencies:
+```bash
+yarn install
+```
+
+3. Run the development server:
+```bash
+yarn dev
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Development Tools
+
+This project uses several development tools:
+- TypeScript for type safety
+- ESLint for code linting
+- SASS for styling
+- Next.js 15.1 for the framework
+- Clerk for authentication
+- OpenAI API for AI-powered analysis
+
+## Available Scripts
+
+- `yarn dev` - Runs the development server with Turbopack
+- `yarn build` - Builds the application for production
+- `yarn start` - Starts the production server
+- `yarn lint` - Runs ESLint for code linting
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used in this project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Clerk Authentication](https://clerk.com/docs)
+- [OpenAI API](https://platform.openai.com/docs)
+- [MongoDB](https://www.mongodb.com/docs/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](LICENSE)

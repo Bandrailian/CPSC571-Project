@@ -49,15 +49,16 @@ async function getAIRecommendations(
     diagnosis: AssessmentResult['diagnosis'],
     previousAssessments: AssessmentResult[]
 ) {
-    const currentAnswersEmbedding = await getEmbedding(JSON.stringify(answers));
-
-    const previousPatterns: PatternData[] = await Promise.all(
-        previousAssessments.map(async (assessment) => ({
-            embedding: await getEmbedding(JSON.stringify(assessment)),
-            diagnosis: assessment.diagnosis,
-            date: assessment.createdAt
-        }))
-    );
+    const [currentAnswersEmbedding, previousPatterns] = await Promise.all([
+        getEmbedding(JSON.stringify(answers)),
+        Promise.all(
+            previousAssessments.map(async (assessment) => ({
+                embedding: await getEmbedding(JSON.stringify(assessment)),
+                diagnosis: assessment.diagnosis,
+                date: assessment.createdAt
+            }))
+        ) as Promise<PatternData[]>
+    ])
 
     const similarityScores = previousPatterns.map(pattern =>
         calculateSimilarity(currentAnswersEmbedding, pattern.embedding)
